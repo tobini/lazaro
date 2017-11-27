@@ -18,13 +18,10 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody2D playerRB;
     private Vector2 lastPlayerPosition;
-    private bool isMoving;
-    private bool isWalking;
 
 	void Start () {
         playerRB = GetComponent<Rigidbody2D>();
         lastPlayerPosition = playerRB.position;
-        isWalking = true;
     }
 
     void FixedUpdate()
@@ -44,16 +41,13 @@ public class PlayerController : MonoBehaviour {
         if (playerHasStoppedMoving())
         {
             OnStopped();
-            isWalking = true;
         }
         else if (Input.GetButton("Run"))
         {
             OnRunning();
-            isWalking = false;
         } else
         {
             OnWalking();
-            isWalking = true;
         }
     }
 
